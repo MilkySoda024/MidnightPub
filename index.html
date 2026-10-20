@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8f2ed">
+<title>오얏꽃 | 테일즈런너 길드</title>
+<meta name="description" content="꽃처럼 피어나, 함께 달리는 오얏꽃 길드의 공간">
+<style>
+:root{--bg:#f8f2ed;--paper:#fffdfa;--rose:#a85f6b;--pink:#e8c9c7;--ink:#493b39;--muted:#887874;--line:#eadbd4}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+.nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px max(5%,calc((100% - 1120px)/2));background:#f8f2edf0;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.brand{font-family:Georgia,serif;font-size:22px;letter-spacing:3px;color:var(--rose);font-weight:bold;white-space:nowrap}
+.links{display:flex;gap:23px;flex-wrap:wrap;font-size:13px;color:var(--muted)}.links a:hover{color:var(--rose)}
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:550px;display:grid;place-items:center;padding:80px 22px;text-align:center;background:linear-gradient(115deg,#f8f2edf2,#f8f2ed9c),url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero:before,.hero:after{position:absolute;z-index:-1;color:#a85f6b20;font-size:clamp(110px,20vw,240px);line-height:1}.hero:before{content:"✿";left:5%;top:7%;transform:rotate(-15deg)}.hero:after{content:"❀";right:5%;bottom:4%;transform:rotate(15deg)}
+.hero-inner{max-width:700px}.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:bold;color:var(--rose)}
+h1{font-family:Georgia,"Batang",serif;font-weight:500;font-size:clamp(58px,10vw,100px);letter-spacing:10px;line-height:1.15;margin:17px 0}
+.hero p{color:#796a65;font-size:15px}.buttons{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 23px;border:1px solid var(--rose);border-radius:99px;background:var(--rose);color:white;font-size:13px;transition:.2s}.btn:hover{transform:translateY(-2px);filter:brightness(.96)}.btn.ghost{background:#fff9;color:var(--rose)}
+.section{width:min(1040px,88%);margin:auto;padding:82px 0}.heading{text-align:center;margin-bottom:34px}.heading h2{font-family:Georgia,"Batang",serif;font-weight:500;font-size:clamp(29px,4vw,40px);margin:7px 0}.heading p{margin:0;color:var(--muted);font-size:13px}
+.about{max-width:760px;margin:auto;padding:38px 32px;border:1px solid var(--line);border-radius:22px;background:var(--paper);text-align:center;box-shadow:0 12px 40px #75504408}.flower{font-size:30px;color:var(--rose)}.about h3{margin:8px 0}.about p{font-size:14px;color:var(--muted);margin-bottom:0}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{padding:26px 23px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}.card .icon{font-size:25px;color:var(--rose)}.card h3{font-size:17px;margin:12px 0 6px}.card p{font-size:13px;color:var(--muted);margin:0;white-space:pre-line}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.photo{position:relative;overflow:hidden;aspect-ratio:4/3;padding:0;border:0;border-radius:15px;background:#e9d8d1}.photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s}.photo:hover img{transform:scale(1.06)}.photo span{position:absolute;bottom:10px;left:10px;right:10px;text-align:left;padding:6px 10px;border-radius:8px;background:#332523a8;color:white;font-size:12px}
+.join{padding:44px 24px;border-radius:24px;background:#ead5d2;text-align:center}.join h2{font-family:Georgia,"Batang",serif;font-weight:500;font-size:32px;margin:5px 0}.join p{font-size:14px;color:#79645f;margin:10px 0 23px}
+footer{text-align:center;padding:28px 15px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.modal{display:none;position:fixed;inset:0;z-index:30;align-items:center;justify-content:center;padding:20px;background:#211918df}.modal.open{display:flex}.modal-inner{position:relative;width:min(900px,100%);text-align:center}.modal img{display:block;max-width:100%;max-height:76vh;margin:auto;border-radius:12px;object-fit:contain}.caption{color:white;font-size:14px;margin-top:12px}.close{position:absolute;right:0;top:-44px;width:38px;height:38px;border:1px solid #ffffff99;border-radius:50%;background:transparent;color:white;font-size:24px}
+@media(max-width:700px){.nav{padding:12px 5%;align-items:flex-start;flex-direction:column;gap:6px}.brand{font-size:19px}.links{gap:15px;font-size:12px}.hero{min-height:460px;padding:70px 20px}.hero p{font-size:13px}.section{padding:60px 0}.cards{grid-template-columns:1fr;gap:11px}.card{padding:22px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.about{padding:28px 20px}.join h2{font-size:27px}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="#home">✿ 오얏꽃</a>
+  <nav class="links" aria-label="메인 메뉴">
+    <a href="#about">길드 소개</a><a href="#activity">활동 안내</a><a href="#gallery">갤러리</a><a href="#join">가입 문의</a>
+  </nav>
+</header>
+<main>
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="eyebrow">TALES RUNNER GUILD</div>
+      <h1>오얏꽃</h1>
+      <p>꽃처럼 피어나, 함께 달리는 우리들의 이야기</p>
+      <div class="buttons"><a class="btn" href="#about">길드 알아보기</a><a class="btn ghost" href="#gallery">추억 구경하기</a></div>
+    </div>
+  </section>
+  <section class="section" id="about">
+    <div class="heading"><div class="eyebrow">ABOUT US</div><h2>우리의 작은 정원</h2><p>오얏꽃에 오신 것을 환영합니다.</p></div>
+    <div class="about"><div class="flower">✿</div><h3>함께라서 더 즐거운 시간</h3><p>이곳은 오얏꽃 길드의 이야기를 담는 공간입니다.<br>함께 달리고 웃으며 쌓아 가는 소중한 추억을 기록해요.<br>우리 길드만의 소개와 규칙을 이 부분에 자유롭게 적어 주세요.</p></div>
+  </section>
+  <section class="section" id="activity">
+    <div class="heading"><div class="eyebrow">OUR ACTIVITIES</div><h2>함께하는 시간</h2><p>우리 길드의 활동을 소개합니다.</p></div>
+    <div class="cards">
+      <article class="card"><div class="icon">♡</div><h3>길드 퀘스트</h3><p>퀘스트 진행 방식과 참여 안내를 적어 주세요.</p></article>
+      <article class="card"><div class="icon">✧</div><h3>점령전</h3><p>점령전 일정과 참여 조건을 적어 주세요.</p></article>
+      <article class="card"><div class="icon">❀</div><h3>길드 친목</h3><p>주요 활동 시간과 함께하는 콘텐츠를 소개해요.</p></article>
+    </div>
+  </section>
+  <section class="section" id="gallery">
+    <div class="heading"><div class="eyebrow">OUR MEMORIES</div><h2>꽃처럼 남은 순간</h2><p>사진을 누르면 크게 볼 수 있어요.</p></div>
+    <div class="gallery">
+      <button class="photo" data-full="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=90" data-caption="우리의 추억 01"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=650&q=80" alt="분홍색 꽃" loading="lazy"><span>우리의 추억 01</span></button>
+      <button class="photo" data-full="https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=1600&q=90" data-caption="우리의 추억 02"><img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=650&q=80" alt="꽃과 자연" loading="lazy"><span>우리의 추억 02</span></button>
+      <button class="photo" data-full="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1600&q=90" data-caption="우리의 추억 03"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=650&q=80" alt="아름다운 꽃" loading="lazy"><span>우리의 추억 03</span></button>
+      <button class="photo" data-full="https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=1600&q=90" data-caption="우리의 추억 04"><img src="https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=650&q=80" alt="꽃다발" loading="lazy"><span>우리의 추억 04</span></button>
+      <button class="photo" data-full="https://images.unsplash.com/photo-1494625927555-6ec4433b1571?auto=format&fit=crop&w=1600&q=90" data-caption="우리의 추억 05"><img src="https://images.unsplash.com/photo-1494625927555-6ec4433b1571?auto=format&fit=crop&w=650&q=80" alt="꽃이 핀 풍경" loading="lazy"><span>우리의 추억 05</span></button>
+      <button class="photo" data-full="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=1600&q=90" data-caption="우리의 추억 06"><img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=650&q=80" alt="자연 속 꽃" loading="lazy"><span>우리의 추억 06</span></button>
+    </div>
+  </section>
+  <section class="section" id="join">
+    <div class="join"><div class="eyebrow">JOIN OUR GUILD</div><h2>우리와 함께 피어나요</h2><p>가입 조건과 문의 방법을 확인하고 함께해요.</p>
+      <!-- 아래 주소를 실제 길드 가입 문의 링크로 바꿔 주세요. -->
+      <a class="btn" href="https://open.kakao.com/" target="_blank" rel="noopener noreferrer">가입 문의하기 ↗</a>
+    </div>
+  </section>
+</main>
+<footer>✿ 오얏꽃 · TALES RUNNER GUILD<br>우리의 추억을 소중히 기록하는 공간</footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="사진 크게 보기">
+  <div class="modal-inner"><button class="close" id="close" aria-label="닫기">×</button><img id="largeImage" src="" alt=""><div class="caption" id="caption"></div></div>
+</div>
+<script>
+const modal=document.getElementById('modal'), largeImage=document.getElementById('largeImage'), caption=document.getElementById('caption'), close=document.getElementById('close');
+function closeModal(){modal.classList.remove('open');largeImage.src='';document.body.style.overflow='';}
+document.querySelectorAll('.photo').forEach(photo=>photo.addEventListener('click',()=>{
+  const img=photo.querySelector('img');largeImage.src=photo.dataset.full||img.src;largeImage.alt=img.alt;caption.textContent=photo.dataset.caption||img.alt;modal.classList.add('open');document.body.style.overflow='hidden';close.focus();
+}));
+close.addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>
